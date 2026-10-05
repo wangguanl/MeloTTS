@@ -55,7 +55,8 @@ with gr.Blocks() as demo:
 @click.option('--host', '-h', default=None)
 @click.option('--port', '-p', type=int, default=None)
 def main(share, host, port):
-    demo.queue(api_open=False).launch(show_api=False, share=share, server_name=host, server_port=port)
+    # Gradio 6+: show_api / api_open removed; keep queue + local bind
+    demo.queue().launch(share=share, server_name=host, server_port=port)
 
 if __name__ == "__main__":
     main()
